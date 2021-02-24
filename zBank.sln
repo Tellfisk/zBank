@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zBankAPI", "zBankAPI\zBankAPI.csproj", "{093CF9E1-6D2D-4D2B-9389-3702E3F6987D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{093CF9E1-6D2D-4D2B-9389-3702E3F6987D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{093CF9E1-6D2D-4D2B-9389-3702E3F6987D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{093CF9E1-6D2D-4D2B-9389-3702E3F6987D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{093CF9E1-6D2D-4D2B-9389-3702E3F6987D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4129EDE7-DAE9-47AB-943D-BD99D8B63455}
+	EndGlobalSection
+EndGlobal
