@@ -7,6 +7,6 @@ namespace zBankAPI.Models
 {
     public class PaybackPlanModel
     {
-        public float[] paybackMonths { get; set; }
+        public Dictionary<int, float[]> paybackMonths { get; set; }
     }
 }

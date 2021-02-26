@@ -18,43 +18,38 @@ namespace zBankAPI.BusinessLogic
             } 
             else 
             {
-                Console.WriteLine("pb scheme " + loanModel.paybackScheme);
                 throw new Exception("Invalid or not yet implemented payback scheme");
             }
 
             return paybackPlan;
         }
 
-        private float[] seriesLoan(LoanModel loanModel) 
+        private Dictionary<int, float[]> seriesLoan(LoanModel loanModel) 
         {
             float interest = interestByLoanType(loanModel.loanType);
             int numberOfMonths = loanModel.paybackPeriod * 12;
             float monthlyPay = loanModel.loanAmount / numberOfMonths;
 
-            float[] paybackMonths = new float[numberOfMonths];
+            Dictionary<int, float[]> paybackMonths = new Dictionary<int, float[]>();
             float restAmount = loanModel.loanAmount;
             for (int m = 0; m < numberOfMonths; m++) 
             {
                 float monthlyInterest = (restAmount - monthlyPay) * interest;
-                float payAndInterest = monthlyPay + monthlyInterest;
 
-                paybackMonths[m] = payAndInterest;
+                paybackMonths.Add(m, new float[] { monthlyPay, monthlyInterest });
                 restAmount -= monthlyPay;
             }
-            int x = 5;
             return paybackMonths;
         }
 
         private float interestByLoanType(String loanType)
         {
-                    if (loanType.Equals("housing")) 
+            if (loanType.Equals("housing")) 
             {
                 return 0.035f;
             }
             else 
             {
-                Console.WriteLine("loan type " + loanType);
-
                 throw new Exception("Invalid or not yet implemented loan type");
             }
         }

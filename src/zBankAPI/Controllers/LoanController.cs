@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using zBankAPI.BusinessLogic;
 using zBankAPI.Models;
+using Newtonsoft.Json;
 
 namespace zBankAPI.Controllers
 {
@@ -18,14 +19,16 @@ namespace zBankAPI.Controllers
         public IActionResult calculateLoan([FromBody]LoanModel loanModel)
         {
             Console.WriteLine("OUTER loan type " + loanModel.loanType);
-            try { 
-                return Ok(businessLogic.calculatePaybackPlan(loanModel)); 
-            } catch (Exception e)
+            try 
+            {
+                PaybackPlanModel paybackPlan = businessLogic.calculatePaybackPlan(loanModel);
+                string jsonResponse = JsonConvert.SerializeObject(paybackPlan);
+                return Ok(jsonResponse); 
+            } 
+            catch (Exception e)
             {
                 return BadRequest();
             }
-            
-            //return Ok(loanModel);
         }
 
     }
