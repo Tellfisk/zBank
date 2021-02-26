@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace zBankAPI.DataAccess
+namespace zBankAPI.Models
 {
-    public class BankDataAccess
+    public class PaybackPlanModel
     {
+        public float[] paybackMonths { get; set; }
     }
 }
