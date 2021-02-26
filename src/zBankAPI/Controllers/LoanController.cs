@@ -7,30 +7,38 @@ using zBankAPI.BusinessLogic;
 using zBankAPI.Models;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace zBankAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("loan")]
     [EnableCors("AllowedOrigins")]
     public class LoanController : ControllerBase
     {
         LoanBusinessLogic businessLogic = new LoanBusinessLogic();
 
-        [HttpPost]
+        [HttpPost]  
+        [Authorize]
         public IActionResult calculateLoan([FromBody]LoanModel loanModel)
         {
-            Console.WriteLine("OUTER loan type " + loanModel.loanType);
             try 
             {
                 PaybackPlanModel paybackPlan = businessLogic.calculatePaybackPlan(loanModel);
                 string jsonResponse = JsonConvert.SerializeObject(paybackPlan);
                 return Ok(jsonResponse); 
-            } 
+            }
             catch (Exception e)
             {
                 return BadRequest();
             }
+        }
+
+        [Authorize]
+        [HttpPost("fis")]
+        public IActionResult calculateLoan2([FromBody]LoanModel loanModel)
+        {
+            return Ok(loanModel);
         }
 
     }
