@@ -15,6 +15,8 @@ namespace zBankAPI
 {
     public class Startup
     {
+        readonly string allowedOrigins = "AllowedOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +27,20 @@ namespace zBankAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: allowedOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://127.0.0.1:3000", "http://10.0.0.199:3000",
+                                          "https://127.0.0.1:3000", "https://10.0.0.199:3000", "https://127.0.0.1:44390/loan")
+                                             .AllowAnyMethod()
+                                             .AllowAnyHeader()
+                                             .AllowCredentials()
+                                             .WithHeaders("Accept", "Content-Type", "Origin", "X-My-Header");
+                                  });
+            });
+
             services.AddControllers();
         }
 
@@ -39,6 +55,8 @@ namespace zBankAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(allowedOrigins);
 
             app.UseAuthorization();
 
