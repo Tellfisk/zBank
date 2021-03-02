@@ -11,6 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6EB73A36
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zBankAPI", "src\zBankAPI\zBankAPI.csproj", "{08DEDBB1-4A2C-45BD-B280-B082D5F31731}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zBankAPI.UnitTests", "tests\zBankAPI.UnitTests\zBankAPI.UnitTests.csproj", "{332D6D8C-B681-43DC-8631-7C4EE9FDB0A5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{08DEDBB1-4A2C-45BD-B280-B082D5F31731} = {08DEDBB1-4A2C-45BD-B280-B082D5F31731}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,12 +26,17 @@ Global
 		{08DEDBB1-4A2C-45BD-B280-B082D5F31731}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08DEDBB1-4A2C-45BD-B280-B082D5F31731}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08DEDBB1-4A2C-45BD-B280-B082D5F31731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{332D6D8C-B681-43DC-8631-7C4EE9FDB0A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{332D6D8C-B681-43DC-8631-7C4EE9FDB0A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{332D6D8C-B681-43DC-8631-7C4EE9FDB0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{332D6D8C-B681-43DC-8631-7C4EE9FDB0A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{08DEDBB1-4A2C-45BD-B280-B082D5F31731} = {AC136883-7B41-4314-9DB3-CD2F34BA3584}
+		{332D6D8C-B681-43DC-8631-7C4EE9FDB0A5} = {6EB73A36-90BB-4B6C-A3C5-6A1BACCFDBDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4129EDE7-DAE9-47AB-943D-BD99D8B63455}

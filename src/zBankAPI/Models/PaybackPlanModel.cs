@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace zBankAPI.Models
 {
     public class PaybackPlanModel
     {
-        public Dictionary<int, float[]> paybackMonths { get; set; }
+        [Required]
+        public float[,] paybackMonths { get; set; }
     }
 }

@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,8 +31,7 @@ namespace zBankAPI
                 options.AddPolicy(name: allowedOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:3000", "http://10.0.0.199:3000",
-                                          "https://localhost:3000", "https://10.0.0.199:3000", "https://127.0.0.1:44390/loan")
+                                      builder.WithOrigins("http://localhost:3000")
                                              .AllowAnyMethod()
                                              .AllowAnyHeader()
                                              .AllowCredentials()
@@ -47,6 +44,7 @@ namespace zBankAPI
                     .RequireAssertion(_ => true)
                     .Build();
             });
+
             services.AddControllers();
         }
 

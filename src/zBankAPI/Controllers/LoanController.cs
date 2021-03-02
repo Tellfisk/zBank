@@ -13,16 +13,15 @@ namespace zBankAPI.Controllers
 {
     [ApiController]
     [Route("loan")]
-    [EnableCors("AllowedOrigins")]
     public class LoanController : ControllerBase
     {
         LoanBusinessLogic businessLogic = new LoanBusinessLogic();
 
-        [HttpPost]  
+        [HttpPost]
         [Authorize]
         public IActionResult calculateLoan([FromBody]LoanModel loanModel)
         {
-            try 
+            try
             {
                 PaybackPlanModel paybackPlan = businessLogic.calculatePaybackPlan(loanModel);
                 string jsonResponse = JsonConvert.SerializeObject(paybackPlan);
@@ -30,16 +29,8 @@ namespace zBankAPI.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e);
             }
         }
-
-        [Authorize]
-        [HttpPost("fis")]
-        public IActionResult calculateLoan2([FromBody]LoanModel loanModel)
-        {
-            return Ok(loanModel);
-        }
-
     }
 }
